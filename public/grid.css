@@ -1,0 +1,22 @@
+.front-container {
+     position: absolute;
+     left: 50%;
+     bottom: 50%;
+     transform: translate(-50%, 50%);
+     margin: auto;
+     
+     background-color: #17141d;
+
+     animation: movement 7s infinite;
+}
+
+@keyframes movement {
+     0%,
+     100% {
+          left: 49%;
+     }
+
+     50% {
+          left: 51%;
+     }
+}
