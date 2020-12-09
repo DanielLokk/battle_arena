@@ -1,7 +1,7 @@
 .stat-list {
      display: flex;
      position: absolute;
-     flex-direction: column;
+
      left: 0;
      top: 117px;
      width: 7%;
@@ -12,12 +12,16 @@
 
 .stat {
      display: flex;
-     position: relative;
+     flex-direction: column;
      align-items: center;
-     justify-content: space-between;
-     align-content: flex-start;
+     height: 300px;
+     width: 5rem;
+     min-width: 3rem;
 }
 
-#heart-img {
+.img-stat{
+     height: 50px;
+     width: 50px;
      transform: scale(0.7);
+     padding-top: 10px;
 }
