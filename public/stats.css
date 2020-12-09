@@ -1,16 +1,12 @@
 .stat-list {
      display: flex;
-     flex-direction: column;
      position: absolute;
+     flex-direction: column;
      left: 0;
      top: 117px;
      width: 7%;
      height: 300px;
 
-     /* border-top-right-radius: 16px;
-     border-bottom-right-radius: 16px;
-     background: #17141d;
-     box-shadow: -1rem 0 3rem #000; */
      opacity: 0.8;
 }
 
@@ -18,8 +14,8 @@
      display: flex;
      position: relative;
      align-items: center;
-     justify-content: space-around;
-     padding: 0 1rem 0 0;
+     justify-content: space-between;
+     align-content: flex-start;
 }
 
 #heart-img {
