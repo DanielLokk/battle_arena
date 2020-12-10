@@ -21,13 +21,13 @@
      position: absolute;
      left: 50%;
      bottom: 50%;
-     height: 200px;
+     max-height: 250px;
      max-width: 500px;
-     
+
      transform: translate(-50%, 10%);
 }
 
-/* With this the front-container and all its contents
+/* With this the front-subcontainer and all its contents
 move from side to side. */
 @keyframes movement {
      0%,
@@ -38,8 +38,4 @@ move from side to side. */
      50% {
           left: 20px;
      }
-}
-
-#enemy {
-     
 }
