@@ -1,22 +1,41 @@
 .front-container {
-     position: absolute;
-     left: 50%;
-     bottom: 50%;
-     transform: translate(-50%, 50%);
-     margin: auto;
-     
-     background-color: #17141d;
+     display: flex;
+     height: 100%;
+     justify-content: center;
+     align-items: center;
+} 
 
+.front-subcontainer {
+     position: relative;
      animation: movement 7s infinite;
 }
 
+#ground {
+     position: relative;
+     top: 0;
+     left: 0;
+
+}
+
+#enemy {
+     position: absolute;
+     left: 50%;
+     bottom: 50%;
+     max-height: 250px;
+     max-width: 500px;
+
+     transform: translate(-50%, 10%);
+}
+
+/* With this the front-subcontainer and all its contents
+move from side to side. */
 @keyframes movement {
      0%,
      100% {
-          left: 49%;
+          left: 0;
      }
 
      50% {
-          left: 51%;
+          left: 20px;
      }
 }

@@ -7,9 +7,16 @@
      <link rel="stylesheet" href="style/card.css">
      <link rel="stylesheet" href="style/stats.css">
      <link rel="stylesheet" href="style/grid.css">
+     <script src="script/game.js"></script>
 </head>
-<body>
-     
+<body onload="onLoad()">
+
+     <main class="front-container">
+          <div class="front-subcontainer">
+               <img id="ground" src="assets/grid.png" alt="grid">
+               <img id="enemy" src="assets/sans.png" alt="grid">
+          </div>
+     </main>
 
      <div id="center-bottom-cards">
           <section class="card-list">
@@ -61,9 +68,6 @@
           </section>
      </div>
 
-     <main class="front-container">
-          <img id="ground" src="assets/sansphase.png" alt="grid">
-     </main>
      
 
      <aside class="stat-list">
@@ -76,12 +80,12 @@
           </section>
 
           <section class="stat">
-               <h3>0</h3>
-               <h3>0</h3>
-               <h3>0</h3>
-               <h3>0</h3>
+               <h3 id="vp-stat">0</h3>
+               <h3 id="attack-stat">0</h3>
+               <h3 id="defense-stat">0</h3>
+               <h3 id="money-stat">0</h3>
           </section>
-          
+
      </aside>
 </body>
 </html>
