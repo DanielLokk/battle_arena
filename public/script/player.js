@@ -1,5 +1,5 @@
 class Player {
-     constructor(token, name, x, y, d, attack, defense, vp, image, object) {
+     constructor(token, name, x, y, d, attack, defense, vp, image, object, remCode) {
           this.token = token;
           this.name = name;
           this.x = x;
@@ -10,6 +10,7 @@ class Player {
           this.vp = vp;
           this.image = image;
           this.object = object;
+          this.remCode = remCode;
      }
 
      // Setters
@@ -22,6 +23,7 @@ class Player {
      setObject(object) { this.object = object; }
 
      //Getters
+     getTokken() { return this.token; }
      getX() { return this.x; }
      getY() { return this.y; }
      getD() { return this.d; }
@@ -29,4 +31,5 @@ class Player {
      setDefense() { return this.defense; }
      setVp() { return this.vp; }
      setObject() { return this.object; }
+     getRemCode() { return this.remCode; }
 }
