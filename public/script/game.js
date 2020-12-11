@@ -2,7 +2,10 @@ const tokenGroup = "b89f9625";
 var player;
 
 function onLoad() {
-     addPlayer("Sans");
+     const newGame = new Promise(function(resolve) {
+          addPlayer("Sans");
+          resolve(true);
+     }).then(getInfoPlayer(player.getToken()));
 }
 
 /**
@@ -17,14 +20,28 @@ function addPlayer(name_player) {
           res => res.json(), 
           (_) => console.log("Mistake adding player!"),
      )
-     .then(
-          result => player = new Player(result.token, name_player, 0, 0, 0, 20, 20, 100, 'assets/sans.png', undefined, result.code));
+     .then(result => { player = new Player(result.token, name_player, 0, 0, 0, 20, 20, 100, 'assets/sans.png', undefined, result.code)});
 }
 
+/**
+ * Funció que rep un player i pren el seu token i remove code per eliminarlo del server
+ * @param {Player} player 
+ */
 function removePlayer(player) {
-     const remPlayer = fetch(`http://battlearena.danielamo.info/api/remove/${tokenGroup}/${player.getTokken()}/${player.getRemCode()}`);
+     const remPlayer = fetch(`http://battlearena.danielamo.info/api/remove/${tokenGroup}/${player.getToken()}/${player.getRemCode()}`);
      remPlayer.then(
           response => console.log(response),
           () => console.log("ERROR")
      );
 }
+
+/**
+ * Obté info del jugador especificat pel token
+ * @param {String} token 
+ */
+function getInfoPlayer(token) {
+     const getPlayer = fetch(`http://battlearena.danielamo.info/api/player/${tokenGroup}/${token}`);
+     getPlayer.then(res => res.json()).then(res => console.log(res));
+}
+
+addPlayer("Sans");

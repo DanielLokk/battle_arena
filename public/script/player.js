@@ -14,22 +14,22 @@ class Player {
      }
 
      // Setters
-     setX(x) { this.x = x; }
-     setY(y) { this.y = y; }
-     setD(d) { this.d = d; }
-     setAttack(attack) { this.attack = attack; }
-     setDefense(defense) { this.defense = defense; }
-     setVp(vp) { this.vp = vp; }
-     setObject(object) { this.object = object; }
+     set setX(x) { this.x = x; }
+     set setY(y) { this.y = y; }
+     set setD(d) { this.d = d; }
+     set setAttack(attack) { this.attack = attack; }
+     set setDefense(defense) { this.defense = defense; }
+     set setVp(vp) { this.vp = vp; }
+     set setObject(object) { this.object = object; }
 
      //Getters
-     getTokken() { return this.token; }
-     getX() { return this.x; }
-     getY() { return this.y; }
-     getD() { return this.d; }
-     setAttack() { return this.attack; }
-     setDefense() { return this.defense; }
-     setVp() { return this.vp; }
-     setObject() { return this.object; }
-     getRemCode() { return this.remCode; }
+     get getToken() { return this.token; }
+     get getX() { return this.x; }
+     get getY() { return this.y; }
+     get getD() { return this.d; }
+     get getAttack() { return this.attack; }
+     get getDefense() { return this.defense; }
+     get getVp() { return this.vp; }
+     get getObject() { return this.object; }
+     get getRemCode() { return this.remCode; }
 }
