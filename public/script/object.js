@@ -15,4 +15,6 @@ class Object {
                this.status = "Normal";
           }
      }
+
+     
 }

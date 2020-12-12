@@ -66,6 +66,13 @@ async function attackPlayer(dir, player) {
      return response.status == 200 ? true : false;
 }
 
+async function pickUpObject(player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/pickup/${tokenGroup}/${player.getToken}/${player.getObject}`);
+     console.log(response);
+}
+
+
+
 function refreshData(player) {
      let vp = document.getElementById("vp-stat");
      let attack = document.getElementById("attack-stat");
@@ -75,4 +82,9 @@ function refreshData(player) {
      vp.innerHTML = player.getVp;
      attack.innerHTML = player.getAttack;
      defense.innerHTML = player.getDefense;
+     
+     pulseAnimation("heart");
+     pulseAnimation("sword");
+     pulseAnimation("shield");
+     pulseAnimation("money");
 }
