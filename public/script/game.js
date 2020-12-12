@@ -10,6 +10,7 @@ async function onLoad() {
      let p = await getInfoPlayer(token);
      player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
      refreshData(player);
+     setImageEnemy(player);
 }
 
 
@@ -71,7 +72,10 @@ async function pickUpObject(player) {
      console.log(response);
 }
 
-
+function setImageEnemy(player) {
+     let enemy = document.getElementById("enemy");
+     enemy.src = player.getImage;
+}
 
 function refreshData(player) {
      let vp = document.getElementById("vp-stat");

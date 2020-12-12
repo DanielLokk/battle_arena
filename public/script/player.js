@@ -8,7 +8,7 @@ class Player {
           this.attack = attack;
           this.defense = defense;
           this.vp = vp;
-          this.image = image;
+          this.image = `assets/battlearena-avatars/my_character-${image}.png`;
           this.obj = obj;
           this.remCode = remCode;
           this.money = 0;
@@ -29,10 +29,12 @@ class Player {
      get getX() { return this.x; }
      get getY() { return this.y; }
      get getD() { return this.d; }
+     get getImage() { return this.image; }
      get getAttack() { return this.attack; }
      get getDefense() { return this.defense; }
      get getVp() { return this.vp; }
      get getObject() { return this.obj; }
      get getRemCode() { return this.remCode; }
      get getMoney() { return this.money; }
+
 }

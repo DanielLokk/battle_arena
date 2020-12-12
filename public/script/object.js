@@ -16,5 +16,9 @@ class Object {
           }
      }
 
-     
+     // GETTERS
+     get name() { return this.name; }
+     get image() { return this.image; }
+     get attack() { return this.attack; }
+     get defense() { return this.defense; }
 }
