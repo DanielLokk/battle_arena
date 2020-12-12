@@ -1,12 +1,19 @@
 const tokenGroup = "b89f9625";
-var player;
+let player;
 
 function onLoad() {
-     const newGame = new Promise(function(resolve) {
-          addPlayer("Sans");
-          resolve(true);
-     }).then(getInfoPlayer(player.getToken()));
+     // Omple el player demanant un spawn i despres la info del jugador
+     const data = addReturnPlayer("Sans").then(data => {
+          const token = data.token;
+          const remCode = data.code;
+
+          const infoPlayer = getInfoPlayer(token).then(p => {
+               player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
+               return player;
+          });
+     });
 }
+
 
 /**
  * Dues funcions:
@@ -14,34 +21,27 @@ function onLoad() {
  *   2. Crea el nou jugador i el retorna
  * @param {String} name_player 
  */
-function addPlayer(name_player) {
-     const newPlayer = fetch(`http://battlearena.danielamo.info/api/spawn/${tokenGroup}/${name_player}`);
-     newPlayer.then(
-          res => res.json(), 
-          (_) => console.log("Mistake adding player!"),
-     )
-     .then(result => { player = new Player(result.token, name_player, 0, 0, 0, 20, 20, 100, 'assets/sans.png', undefined, result.code)});
+async function addReturnPlayer(name_player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/spawn/${tokenGroup}/${name_player}`);
+     let data = await response.json();
+     return data;
 }
 
 /**
  * Funció que rep un player i pren el seu token i remove code per eliminarlo del server
  * @param {Player} player 
  */
-function removePlayer(player) {
-     const remPlayer = fetch(`http://battlearena.danielamo.info/api/remove/${tokenGroup}/${player.getToken()}/${player.getRemCode()}`);
-     remPlayer.then(
-          response => console.log(response),
-          () => console.log("ERROR")
-     );
+async function removePlayer(player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/remove/${tokenGroup}/${player.getToken}/${player.getRemCode}`);
+     await console.log(response);
 }
 
 /**
  * Obté info del jugador especificat pel token
  * @param {String} token 
  */
-function getInfoPlayer(token) {
-     const getPlayer = fetch(`http://battlearena.danielamo.info/api/player/${tokenGroup}/${token}`);
-     getPlayer.then(res => res.json()).then(res => console.log(res));
+async function getInfoPlayer(token) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/player/${tokenGroup}/${token}`);
+     let data = await response.json();
+     return data;
 }
-
-addPlayer("Sans");
