@@ -44,6 +44,17 @@ async function getInfoPlayer(token) {
      return data;
 }
 
+/**
+ * Fa una petició per moure al jugador, retorna true i ha sigut capaç
+ * si hi ha un objecte que obstaculitzi, retorna false.
+ * @param {String} dir direcció que pot ser N, S, E, O
+ * @param {Player} player agafarem el token per fer la crida
+ */
+async function movePlayer(dir, player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/move/${tokenGroup}/${player.getToken}/${dir}`);
+     return response.status == 200 ? true : false;
+}
+
 function refreshData(player) {
      let vp = document.getElementById("vp-stat");
      let attack = document.getElementById("attack-stat");
