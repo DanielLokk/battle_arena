@@ -1,17 +1,14 @@
 const tokenGroup = "b89f9625";
 let player;
 
-function onLoad() {
+async function onLoad() {
      // Omple el player demanant un spawn i despres la info del jugador
-     const data = addReturnPlayer("Sans").then(data => {
-          const token = data.token;
-          const remCode = data.code;
+     const data = await addPlayer("Sans");
+     const token = data.token;
+     const remCode = data.token;
 
-          const infoPlayer = getInfoPlayer(token).then(p => {
-               player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
-               return player;
-          });
-     });
+     let p = await getInfoPlayer(token);
+     player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
 }
 
 
@@ -21,7 +18,7 @@ function onLoad() {
  *   2. Crea el nou jugador i el retorna
  * @param {String} name_player 
  */
-async function addReturnPlayer(name_player) {
+async function addPlayer(name_player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/spawn/${tokenGroup}/${name_player}`);
      let data = await response.json();
      return data;
@@ -33,7 +30,7 @@ async function addReturnPlayer(name_player) {
  */
 async function removePlayer(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/remove/${tokenGroup}/${player.getToken}/${player.getRemCode}`);
-     await console.log(response);
+     console.log(response);
 }
 
 /**
