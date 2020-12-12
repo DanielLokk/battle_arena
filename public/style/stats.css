@@ -28,6 +28,7 @@
      transition: .2s ease-in-out;
 }
 
+/* Animació que quan s'activa fa un puls al element aplicat */
 .pulse {
      transition: .2s ease-in;
      transform: scale(0.8);
