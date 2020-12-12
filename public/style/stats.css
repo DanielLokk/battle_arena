@@ -2,7 +2,7 @@
      display: flex;
      position: absolute;
 
-     left: 0;
+     left: 10px;
      top: 117px;
      width: 7%;
      height: 300px;
@@ -24,4 +24,11 @@
      width: 50px;
      transform: scale(0.7);
      padding-top: 10px;
+
+     transition: .2s ease-in-out;
+}
+
+.pulse {
+     transition: .2s ease-in;
+     transform: scale(0.8);
 }

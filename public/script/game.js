@@ -53,5 +53,4 @@ function refreshData(player) {
      vp.innerHTML = player.getVp;
      attack.innerHTML = player.getAttack;
      defense.innerHTML = player.getDefense;
-     
 }
