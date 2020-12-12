@@ -2,19 +2,26 @@
      position: absolute;
      left: 45%;
      top: 2%;
-     transform: scale(0.3);
+     
 }
 
 #east {
      position: absolute;
      right: 2%;
      top: 45%;
-     transform: scale(0.3);
 }
 
 #west {
      position: absolute;
      left: 2%;
      top: 45%;
+}
+
+.arrow {
      transform: scale(0.3);
+     transition: .2s ease-in-out;
+}
+
+.arrow:hover {
+     transform: scale(0.5);
 }
