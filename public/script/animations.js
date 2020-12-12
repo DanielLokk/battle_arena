@@ -1,6 +1,10 @@
-function pulseAnimation(stat) {
+/**
+ * Rep un ID i recrea l'animació de un pols
+ * @param {String} id 
+ */
+function pulseAnimation(id) {
      let start = new Promise((resolve, reject) => {
-          let element = document.getElementById(stat);
+          let element = document.getElementById(id);
           element.classList.add("pulse");
           if (element.classList.contains("pulse")) {
                resolve(element);
@@ -10,6 +14,5 @@ function pulseAnimation(stat) {
      })
      .then(element => setTimeout(() => element.classList.remove("pulse"), 300))
      .catch(err => console.log(err));
-     
 }
 
