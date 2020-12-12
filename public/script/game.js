@@ -55,6 +55,17 @@ async function movePlayer(dir, player) {
      return response.status == 200 ? true : false;
 }
 
+/**
+ * Ataca en la direcció demanada, si ha pogut fer el atac retorna true, si el jugador 
+ * no hi era, era mort o hi ha una paret, tornarem false.
+ * @param {String} dir direcció que pot ser N, S, E, O
+ * @param {Player} player agafarem el token per fer la crida
+ */
+async function attackPlayer(dir, player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/attack/${tokenGroup}/${player.getToken}/${dir}`);
+     return response.status == 200 ? true : false;
+}
+
 function refreshData(player) {
      let vp = document.getElementById("vp-stat");
      let attack = document.getElementById("attack-stat");
