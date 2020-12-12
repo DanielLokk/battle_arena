@@ -11,6 +11,7 @@ class Player {
           this.image = image;
           this.object = object;
           this.remCode = remCode;
+          this.money = 0;
      }
 
      // Setters
@@ -21,6 +22,7 @@ class Player {
      set setDefense(defense) { this.defense = defense; }
      set setVp(vp) { this.vp = vp; }
      set setObject(object) { this.object = object; }
+     set addMoney(money) { this.money += money; }
 
      //Getters
      get getToken() { return this.token; }
@@ -32,4 +34,5 @@ class Player {
      get getVp() { return this.vp; }
      get getObject() { return this.object; }
      get getRemCode() { return this.remCode; }
+     get getMoney() { return this.money; }
 }

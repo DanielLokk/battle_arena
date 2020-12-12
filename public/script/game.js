@@ -9,6 +9,7 @@ async function onLoad() {
 
      let p = await getInfoPlayer(token);
      player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
+     refreshData(player);
 }
 
 
@@ -41,4 +42,16 @@ async function getInfoPlayer(token) {
      let response = await fetch(`http://battlearena.danielamo.info/api/player/${tokenGroup}/${token}`);
      let data = await response.json();
      return data;
+}
+
+function refreshData(player) {
+     let vp = document.getElementById("vp-stat");
+     let attack = document.getElementById("attack-stat");
+     let defense = document.getElementById("defense-stat");
+     let money = document.getElementById("money-stat");
+
+     vp.innerHTML = player.getVp;
+     attack.innerHTML = player.getAttack;
+     defense.innerHTML = player.getDefense;
+     
 }
