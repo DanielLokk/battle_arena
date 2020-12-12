@@ -14,7 +14,8 @@
      position: relative;
      top: 0;
      left: 0;
-     /* TODO: Set minimum height and width */
+     max-width: 625px;
+     padding-top: 1.5rem;
 }
 
 #enemy {

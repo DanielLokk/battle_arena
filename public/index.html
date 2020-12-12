@@ -8,6 +8,8 @@
      <link rel="stylesheet" href="style/card.css">
      <link rel="stylesheet" href="style/stats.css">
      <link rel="stylesheet" href="style/grid.css">
+     <link rel="stylesheet" href="style/cardinal.css">
+     
      <script src="script/player.js"></script>
      <script src="script/object.js"></script>
      <script src="script/game.js"></script>
@@ -15,11 +17,15 @@
 </head>
 <body onload="onLoad()">
 
+     <img id="south" src="assets/arrow-up.svg">
+     <img id="west" src="assets/arrow_left.svg">
+     <img id="east" src="assets/arrow_right.svg">
+
      <!-- Centre de la pantalla, terreny i jugador enemic -->
      <main class="front-container">
           <div class="front-subcontainer">
                <img id="ground" src="assets/grid.png" alt="grid">
-               <img id="enemy" src="assets/sans.png" alt="grid">
+               <img id="enemy" alt="grid">
           </div>
      </main>
 
