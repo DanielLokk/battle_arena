@@ -1,5 +1,6 @@
 const tokenGroup = "b89f9625";
 let player;
+let frontPlayer;
 
 async function onLoad() {
      // Omple el player demanant un spawn i despres la info del jugador
@@ -92,22 +93,36 @@ async function pickUpObject(player) {
 async function playersAndObjects(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/playersobjects/${tokenGroup}/${player.getToken}`);
      let positions = await response.json();
-     console.log(positions);
+     return positions;
 }
 
+/**
+ * Obté la posició de tots els elements en el mapa
+ * @param {Playet} player 
+ */
 async function obtainMap(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/map/${tokenGroup}/${player.getToken}`);
      let map = await response.json();
-     console.log(map);
+     return map;
 }
 
 /**
  * Posa a la img del html la imatge corresponent
  * @param {Player} player Enemic que esta en front
  */
-function setImageEnemy(player) {
+async function setImageEnemy(player) {
      let enemy = document.getElementById("enemy");
-     enemy.src = player.getImage;
+     let infoEnv = await playersAndObjects(player);
+     console.log(infoEnv);
+     for (let i = 0; i < infoEnv.enemies.length; i++) {
+          const foe = infoEnv.enemies[i];
+          if (foe.direction == player.getD) {
+               let frontPlayer = new Player(0, "", foe.x, foe.y, foe.direction, 0, 0, foe.vitalpoints, foe.image, "", 0);
+               enemy.src = frontPlayer.getImage;
+               break;
+          }
+     }
+
 }
 
 function refreshData(player) {
