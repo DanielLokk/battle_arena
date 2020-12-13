@@ -16,3 +16,8 @@ function pulseAnimation(id) {
      .catch(err => console.log(err));
 }
 
+function showPreview(element) {
+     //TODO: get element of the direction
+     /* element.setAttribute('src', ); */
+}
+

@@ -67,11 +67,16 @@ async function attackPlayer(dir, player) {
      return response.status == 200 ? true : false;
 }
 
+// TODO: No acabo d'entendre com funciona aquesta merda a l'enunciat
 async function pickUpObject(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/pickup/${tokenGroup}/${player.getToken}/${player.getObject}`);
      console.log(response);
 }
 
+/**
+ * Posa a la img del html la imatge corresponent
+ * @param {Player} player Enemic que esta en front
+ */
 function setImageEnemy(player) {
      let enemy = document.getElementById("enemy");
      enemy.src = player.getImage;

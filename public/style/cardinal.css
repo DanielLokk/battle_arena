@@ -18,7 +18,7 @@
 }
 
 .arrow {
-     transform: scale(0.4);
+     transform: scale(0.2);
      transition: .2s ease-in-out;
 }
 
