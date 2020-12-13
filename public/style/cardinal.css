@@ -18,10 +18,10 @@
 }
 
 .arrow {
-     transform: scale(0.3);
+     transform: scale(0.4);
      transition: .2s ease-in-out;
 }
 
 .arrow:hover {
-     transform: scale(0.5);
+     transform: scale(.55);
 }
