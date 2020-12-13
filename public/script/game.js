@@ -22,8 +22,19 @@ async function onLoad() {
  */
 async function addPlayer(name_player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/spawn/${tokenGroup}/${name_player}`);
-     let data = await response.json();
-     return data;
+     let playerKey = await response.json();
+     return playerKey;
+}
+
+/**
+ * En cas de que el jugador hagi mort, actualitza el player amb nova posicio
+ * @param {Player} player 
+ */
+async function respawn(player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/respawn/${tokenGroup}/${player.getToken}`);
+     
+     //TODO: setX, setY, setImage, setVp
+     console.log(response);
 }
 
 /**
@@ -41,8 +52,9 @@ async function removePlayer(player) {
  */
 async function getInfoPlayer(token) {
      let response = await fetch(`http://battlearena.danielamo.info/api/player/${tokenGroup}/${token}`);
-     let data = await response.json();
-     return data;
+     let playerData = await response.json();
+     console.log(playerData);
+     return playerData;
 }
 
 /**
@@ -71,6 +83,22 @@ async function attackPlayer(dir, player) {
 async function pickUpObject(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/pickup/${tokenGroup}/${player.getToken}/${player.getObject}`);
      console.log(response);
+}
+
+/**
+ * Retorna que hi ha a les caselles colindants
+ * @param {Player} player Obté el token del jugador
+ */
+async function playersAndObjects(player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/playersobjects/${tokenGroup}/${player.getToken}`);
+     let positions = await response.json();
+     console.log(positions);
+}
+
+async function obtainMap(player) {
+     let response = await fetch(`http://battlearena.danielamo.info/api/map/${tokenGroup}/${player.getToken}`);
+     let map = await response.json();
+     console.log(map);
 }
 
 /**
