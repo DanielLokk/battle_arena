@@ -25,3 +25,7 @@
 .arrow:hover {
      transform: scale(.55);
 }
+
+.transparent {
+     opacity: 0;
+}

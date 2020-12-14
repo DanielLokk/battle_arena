@@ -19,5 +19,7 @@ function pulseAnimation(id) {
 function showPreview(element) {
      //TODO: get element of the direction
      /* element.setAttribute('src', ); */
+     //element.classList.add("transparent");
+     
 }
 

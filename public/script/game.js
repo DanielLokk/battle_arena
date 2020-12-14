@@ -2,6 +2,13 @@ const tokenGroup = "b89f9625";
 let player;
 let frontPlayer;
 
+// Aqui guardem cada segon que hi ha en les direccions colindants.
+// Han de ser arrays perque pot haverhi més d'una cosa a la vegada.
+let dirWest = [];
+let dirEast = [];
+let dirNorth = [];
+let dirSouth = [];
+
 async function onLoad() {
      // Omple el player demanant un spawn i despres la info del jugador
      const data = await addPlayer("Sans");
@@ -12,6 +19,7 @@ async function onLoad() {
      player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
      refreshData(player);
      setImageEnemy(player);
+     setDirectionElements(player);
 }
 
 
@@ -107,13 +115,49 @@ async function obtainMap(player) {
 }
 
 /**
+ * Obtenir els objectes o enemics de les caselles colindants
+ * @param {Player} player 
+ */
+async function setDirectionElements(player) {
+     let infoEnv = await playersAndObjects(player);
+     console.log(infoEnv);
+     for (let i = 0; i < infoEnv.enemies.length; i++) {
+          const enemy = infoEnv.enemies[i];
+          switch (enemy.direction) {
+               case "O": dirWest.push(enemy);
+               break;
+               case "E": dirEast.push(enemy);
+               break;
+               case "N": dirNorth.push(enemy);
+               break;
+               case "S": dirSouth.push(enemy);
+               break;
+          }
+     }
+
+     for (let i = 0; i < infoEnv.objects.length; i++) {
+          const obj = infoEnv.enemies[i];
+          switch (obj.direction) {
+               case "O": dirWest.push(obj);
+               break;
+               case "E": dirEast.push(obj);
+               break;
+               case "N": dirNorth.push(obj);
+               break;
+               case "S": dirSouth.push(obj);
+               break;
+          }
+     }
+}
+
+/**
+ * TODO: incloure al setdirectionElements
  * Posa a la img del html la imatge corresponent
  * @param {Player} player Enemic que esta en front
  */
 async function setImageEnemy(player) {
      let enemy = document.getElementById("enemy");
      let infoEnv = await playersAndObjects(player);
-     console.log(infoEnv);
      for (let i = 0; i < infoEnv.enemies.length; i++) {
           const foe = infoEnv.enemies[i];
           if (foe.direction == player.getD) {
