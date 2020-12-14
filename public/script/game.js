@@ -158,30 +158,25 @@ async function setDirectionElements(player) {
 async function setImageEnemy(player) {
      let enemy = document.getElementById("enemy");
      let p;
-     emptyPlayer = new Player(0, "", 0, 0, "D", 0, 0, 0, "", "", 0);
+     emptyPlayer = [new Player(0, "", 0, 0, 0, 0, 0, "D", 0, "", 0)];
 
      // TODO: de moment només agafen el primer de cada array, ha de ser aleatori
      switch (player.getD) {
           case "N":
-               p = dirNorth ? dirNorth : emptyPlayer;
+               p = dirNorth[0] ? dirNorth[0] : emptyPlayer;
           break;
           case "E":
-               p = dirEast ? dirEast : emptyPlayer;
+               p = dirEast[0] ? dirEast[0] : emptyPlayer;
           break;
           case "S":
-               p = dirSouth ? dirSouth : emptyPlayer;
+               p = dirSouth[0] ? dirSouth[0] : emptyPlayer;
           break;
           case "O":
-               p = dirWest ? dirWest : emptyPlayer;
+               p = dirWest[0] ? dirWest[0] : emptyPlayer;
           break;
      }
-     
-     console.log("N" + dirNorth);
-     console.log("E" + dirEast);
-     console.log("S" + dirSouth);
-     console.log("W" + dirWest);
 
-     frontPlayer = new Player(0, "", p[0].x, p[0].y, p[0].direction, 0, 0, p[0].vitalpoints, p[0].image, "", 0);
+     frontPlayer = new Player(0, "", p.x, p.y, p.direction, 0, 0, p.vitalpoints, p.image, "", 0);
      enemy.src = frontPlayer.getImage;
 }
 
