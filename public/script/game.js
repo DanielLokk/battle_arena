@@ -125,6 +125,10 @@ async function setImageEnemy(player) {
 
 }
 
+/**
+ * Actualitza els stats en pantalla
+ * @param {Player} player 
+ */
 function refreshData(player) {
      let vp = document.getElementById("vp-stat");
      let attack = document.getElementById("attack-stat");
