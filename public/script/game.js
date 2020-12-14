@@ -18,8 +18,8 @@ async function onLoad() {
      let p = await getInfoPlayer(token);
      player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
      refreshData(player);
+     await setDirectionElements(player);
      setImageEnemy(player);
-     setDirectionElements(player);
 }
 
 
@@ -157,16 +157,32 @@ async function setDirectionElements(player) {
  */
 async function setImageEnemy(player) {
      let enemy = document.getElementById("enemy");
-     let infoEnv = await playersAndObjects(player);
-     for (let i = 0; i < infoEnv.enemies.length; i++) {
-          const foe = infoEnv.enemies[i];
-          if (foe.direction == player.getD) {
-               let frontPlayer = new Player(0, "", foe.x, foe.y, foe.direction, 0, 0, foe.vitalpoints, foe.image, "", 0);
-               enemy.src = frontPlayer.getImage;
-               break;
-          }
-     }
+     let p;
+     emptyPlayer = new Player(0, "", 0, 0, "D", 0, 0, 0, "", "", 0);
 
+     // TODO: de moment només agafen el primer de cada array, ha de ser aleatori
+     switch (player.getD) {
+          case "N":
+               p = dirNorth ? dirNorth : emptyPlayer;
+          break;
+          case "E":
+               p = dirEast ? dirEast : emptyPlayer;
+          break;
+          case "S":
+               p = dirSouth ? dirSouth : emptyPlayer;
+          break;
+          case "O":
+               p = dirWest ? dirWest : emptyPlayer;
+          break;
+     }
+     
+     console.log("N" + dirNorth);
+     console.log("E" + dirEast);
+     console.log("S" + dirSouth);
+     console.log("W" + dirWest);
+
+     frontPlayer = new Player(0, "", p[0].x, p[0].y, p[0].direction, 0, 0, p[0].vitalpoints, p[0].image, "", 0);
+     enemy.src = frontPlayer.getImage;
 }
 
 /**
@@ -177,6 +193,8 @@ function refreshData(player) {
      let vp = document.getElementById("vp-stat");
      let attack = document.getElementById("attack-stat");
      let defense = document.getElementById("defense-stat");
+
+     //TODO: sumar + 20 cada kill
      let money = document.getElementById("money-stat");
 
      vp.innerHTML = player.getVp;
