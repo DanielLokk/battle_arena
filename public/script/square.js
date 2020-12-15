@@ -1,8 +1,7 @@
 class Square {
-     constructor(x, y, element) {
+     constructor(x, y) {
           this.x = x;
           this.y = y;
-          this.element = element;
           this.visible = false;
      }
 

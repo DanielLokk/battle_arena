@@ -3,7 +3,7 @@ let player;
 let frontPlayer;
 
 // Defines the game table
-let game_table = [40][40];
+let game_table = loadGame();
 
 // Aqui guardem cada segon que hi ha en les direccions colindants.
 // Han de ser arrays perque pot haverhi més d'una cosa a la vegada.
@@ -12,29 +12,32 @@ let dirEast = [];
 let dirNorth = [];
 let dirSouth = [];
 
-async function onLoad() {
-
-     // Inicialitza el taulell
-
+async function loadGame() {
+     
      // Omple el player demanant un spawn i despres la info del jugador
      const data = await addPlayer("Sans");
      const token = data.token;
      const remCode = data.token;
-
+     
      let p = await getInfoPlayer(token);
      player = new Player(token, p.name, p.x, p.y, p.direction, p.attack, p.defense, p.vitalpoints, p.image, p.object, remCode);
      refreshData(player);
      await setDirectionElements(player);
      setImageEnemy(player);
+
+     // Inicialitza el taulell
+     let game_table = [];
+     
+     for (let i = 0; i < 40; i++) {
+          const row = [];
+          for (let j = 0; j < 40; j++) {
+               row.push(new Square(i, j));
+          }
+          game_table.push(row);
+     }
+
+     return game_table;
 }
-
-
-
-
-
-
-
-
 
 /**
  * Obtenir els objectes o enemics de les caselles colindants
