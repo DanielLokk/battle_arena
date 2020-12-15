@@ -151,7 +151,6 @@ async function setDirectionElements(player) {
 }
 
 /**
- * TODO: incloure al setdirectionElements
  * Posa a la img del html la imatge corresponent
  * @param {Player} player Enemic que esta en front
  */
