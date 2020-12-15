@@ -27,11 +27,18 @@ async function loadGame() {
 
      // Inicialitza el taulell
      let game_table = [];
+     const xPl = player.getX;
+     const yPl = player.getY;
      
      for (let i = 0; i < 40; i++) {
           const row = [];
           for (let j = 0; j < 40; j++) {
-               row.push(new Square(i, j));
+               const square = new Square(i, j);
+               const diffX = (Math.abs(xPl - i));
+               const diffY = (Math.abs(yPl - j));
+               //console.log(`PlayerX: ${xPl} - i: ${i} = ${diffX} so ${diffX < 10}`);
+               //if (diffX < 10 && diffY < 10) console.log("YEP");
+               row.push(square);
           }
           game_table.push(row);
      }

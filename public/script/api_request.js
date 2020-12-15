@@ -88,5 +88,6 @@ async function playersAndObjects(player) {
 async function obtainMap(player) {
      let response = await fetch(`http://battlearena.danielamo.info/api/map/${tokenGroup}/${player.getToken}`);
      let map = await response.json();
+     console.log(map);
      return map;
 }
